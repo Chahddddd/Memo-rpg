@@ -12,3 +12,9 @@ qui s’y trouvent.
 ### Compilation
 ```bash
 gcc main.c -o programme
+```
+
+### Équipe :
+- Chahd
+- Zakaria
+- Ayoub 
