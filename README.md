@@ -8,6 +8,7 @@ qui s’y trouvent.
 
 ### Prérequis
 - Compilateur C
+- Makefile
 
 ### Compilation
 ```bash
