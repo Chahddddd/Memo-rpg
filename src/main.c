@@ -1,5 +1,12 @@
 #include <stdio.h>
 
+#include "board.h"
+
 int main() {
-    printf("Abrakanever\n");
+    Board board;
+
+    init_board(&board);
+    display_board(&board);
+
+    return 0;
 }
