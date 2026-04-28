@@ -1,6 +1,6 @@
 CC = gcc
-CFLAGS = -Wall -Wextra
-SRC = src/main.c
+CFLAGS = -Wall -Wextra -Iinclude
+SRC = src/main.c src/board.c
 BUILD_DIR = build
 TARGET = $(BUILD_DIR)/program
 
