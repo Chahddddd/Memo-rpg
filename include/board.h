@@ -5,12 +5,12 @@
 
 // types de cellules
 typedef enum {
-    EMPTY,
-    MONSTER,
-    TREASURE,
-    WEAPON,
-    PORTAL,
-    TOTEM
+    EMPTY, // cellule vide
+    MONSTER, // cellule avec un monstre
+    TREASURE, // cellule avec un trésor
+    WEAPON, // cellule avec une arme
+    PORTAL, // cellule avec un portail
+    TOTEM // cellule avec un totem
 } CellType;
 
 // structure de la cellule et du plateau
