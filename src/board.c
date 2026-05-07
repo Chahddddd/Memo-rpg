@@ -5,30 +5,52 @@
 
 // fonctions pour initialiser et afficher le plateau
 void init_board(Board *board) {
+
     srand(time(NULL));
 
     for (int i = 0; i < SIZE; i++) {
+
         for (int j = 0; j < SIZE; j++) {
-            board->grid[i][j].type = rand() % 6; // random type
+
+            board->grid[i][j].type = rand() % 6;
+
             board->grid[i][j].revealed = 0;
+
+            board->grid[i][j].playerNumber = 0;
         }
     }
 }
 
 // Affiche le plateau (X pour non révélé, type pour révélé)
 void display_board(Board *board) {
-    printf("\nBoard:\n");
+
+    printf("\n   1 2 3 4 5\n");
 
     for (int i = 0; i < SIZE; i++) {
+
+        printf("%d  ", i + 1);
+
         for (int j = 0; j < SIZE; j++) {
 
-            if (board->grid[i][j].revealed) {
-                printf("%d ", board->grid[i][j].type);
-            } else {
-                printf("X ");
+            // afficher joueur
+            if (board->grid[i][j].playerNumber > 0) {
+
+                printf("%d ", board->grid[i][j].playerNumber);
             }
 
+            // afficher case révélée
+            else if (board->grid[i][j].revealed) {
+
+                printf("O ");
+            }
+
+            // case cachée
+            else {
+
+                printf("X ");
+            }
         }
+
         printf("\n");
     }
 }
@@ -40,4 +62,25 @@ void reveal_cell(Board *board, int x, int y) {
     }
 
     board->grid[x][y].revealed = 1; // revealed = ça révèle la cellule
+}
+
+void place_player(Board *board, int x, int y, int playerNumber) {
+
+    board->grid[x][y].playerNumber = playerNumber;
+}
+
+void remove_player(Board *board, int x, int y) {
+
+    board->grid[x][y].playerNumber = 0;
+}
+
+void hide_board(Board *board) {
+
+    for (int i = 0; i < SIZE; i++) {
+
+        for (int j = 0; j < SIZE; j++) {
+
+            board->grid[i][j].revealed = 0;
+        }
+    }
 }

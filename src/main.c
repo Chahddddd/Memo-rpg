@@ -19,6 +19,7 @@ int main() {
 
     // Choix du nombre de joueurs
     do {
+
         printf("Enter number of players (2-4): ");
         scanf("%d", &numberOfPlayers);
 
@@ -30,9 +31,11 @@ int main() {
         printf("\nEnter name for player %d: ", i + 1);
         scanf("%49s", playerName);
 
-        // Pour l'instant :
-        // classes automatiques selon l'ordre
+        // Initialisation du joueur
         init_player(&players[i], playerName, i, 0, 0);
+
+        // Placement sur le plateau
+        place_player(&board, players[i].x, players[i].y, i + 1);
     }
 
     // Boucle de jeu
@@ -40,7 +43,7 @@ int main() {
 
         display_board(&board);
 
-        // Tour de chaque joueur
+        // Tour des joueurs
         for (int i = 0; i < numberOfPlayers; i++) {
 
             printf("\n===== PLAYER %d TURN =====\n", i + 1);
@@ -50,13 +53,27 @@ int main() {
             printf("Enter position (1-5) (x y): ");
 
             if (scanf("%d %d", &x, &y) != 2) {
+
                 printf("Invalid input\n");
                 return 1;
             }
 
+            // Retirer ancien joueur du plateau
+            remove_player(&board, players[i].x, players[i].y);
+
+            // Révéler la nouvelle case
             reveal_cell(&board, x - 1, y - 1);
 
+            // Déplacer le joueur
             move_player(&players[i], x - 1, y - 1);
+
+            // Replacer joueur
+            place_player(
+                &board,
+                players[i].x,
+                players[i].y,
+                i + 1
+            );
         }
     }
 
