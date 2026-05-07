@@ -32,3 +32,12 @@ void display_board(Board *board) {
         printf("\n");
     }
 }
+// Fonction pour révéler une cellule
+void reveal_cell(Board *board, int x, int y) {
+    if (x < 0 || x >= SIZE || y < 0 || y >= SIZE) {
+        printf("Invalid position\n");
+        return;
+    }
+
+    board->grid[x][y].revealed = 1;
+}
