@@ -27,5 +27,6 @@ typedef struct {
 // fonctions
 void init_board(Board *board);
 void display_board(Board *board);
+void reveal_cell(Board *board, int x, int y);
 
 #endif
