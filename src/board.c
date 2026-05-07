@@ -39,5 +39,5 @@ void reveal_cell(Board *board, int x, int y) {
         return;
     }
 
-    board->grid[x][y].revealed = 1;
+    board->grid[x][y].revealed = 1; // revealed = ça révèle la cellule
 }
